@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="NexTech Academy - Trung tâm đào tạo tin học hàng đầu: Chứng chỉ MOS quốc tế, Lập trình Java thực chiến, và Kỹ năng Ứng dụng AI đột phá hiệu suất.">
+    <meta name="keywords" content="Trung tâm tin học, Đào tạo MOS, Lập trình Java, Học AI, Prompt Engineering, NexTech Academy">
+    <meta name="author" content="NexTech Academy">
+    <title>NexTech Academy - Đào Tạo Tin Học, Lập Trình Java & Ứng Dụng AI Thực Chiến</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom Aesthetics CSS -->
+    <style>
+        :root {
+            --primary-bg: #090d16;
+            --card-bg: rgba(19, 26, 43, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --accent-purple: #8b5cf6;
+            --accent-cyan: #06b6d4;
+            --accent-indigo: #6366f1;
+            --accent-pink: #ec4899;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --glow-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+            --btn-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Ambient Background Lights */
+        .bg-glow-1 {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, rgba(9, 13, 22, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .bg-glow-2 {
+            position: absolute;
+            top: 40%;
+            right: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, rgba(9, 13, 22, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: rgba(9, 13, 22, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            letter-spacing: -0.5px;
+            color: #fff !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .brand-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--glow-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .nav-link {
+            color: #d1d5db !important;
+            font-weight: 500;
+            margin: 0 8px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #fff !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-cyan);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        /* Button Styling */
+        .btn-cta {
+            background: var(--btn-gradient);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50rem;
+            box-shadow: 0 4px 20px rgba(79, 70, 229, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124, 58, 237, 0.6);
+            color: #fff;
+        }
+
+        .btn-outline-custom {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.03);
+            font-weight: 600;
+            padding: 0.75rem 1.75rem;
+            border-radius: 50rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 9rem 0 6rem 0;
+            position: relative;
+        }
+
+        .badge-pill {
+            background: rgba(99, 102, 241, 0.15);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: #a5b4fc;
+            padding: 0.5rem 1.25rem;
+            border-radius: 50rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .gradient-text {
+            background: var(--glow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-description {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 620px;
+        }
+
+        .hero-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            position: relative;
+        }
+
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 25px;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .tech-badge {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Features Section */
+        .section-title-wrapper {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 2.25rem;
+            height: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(99, 102, 241, 0.4);
+            box-shadow: 0 15px 35px rgba(99, 102, 241, 0.15);
+        }
+
+        .feature-icon-box {
+            width: 64px;
+            height: 64px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .icon-mos {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+        }
+
+        .icon-java {
+            background: rgba(236, 72, 153, 0.15);
+            color: var(--accent-pink);
+            border: 1px solid rgba(236, 72, 153, 0.3);
+        }
+
+        .icon-ai {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--accent-purple);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .feature-card:hover .feature-icon-box {
+            transform: scale(1.1) rotate(4deg);
+        }
+
+        .feature-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .feature-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        /* Stats Strip */
+        .stats-strip {
+            background: rgba(19, 26, 43, 0.5);
+            border-y: 1px solid var(--card-border);
+            padding: 3rem 0;
+            margin: 4rem 0;
+        }
+
+        .stat-number {
+            font-size: 2.75rem;
+            font-weight: 800;
+            background: var(--glow-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .avatar-img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-indigo);
+        }
+
+        /* Modal Styling */
+        .modal-content {
+            background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border-radius: 20px;
+        }
+
+        .form-control, .form-select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--accent-indigo);
+            color: #fff;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .form-select option {
+            background: #0f172a;
+            color: #fff;
+        }
+
+        /* Footer */
+        footer {
+            background: #050811;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 4rem 0 2rem 0;
+            color: var(--text-muted);
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: var(--accent-cyan);
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--accent-indigo);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 991px) {
+            .hero-title {
+                font-size: 2.75rem;
+            }
+            .hero-section {
+                padding-top: 7rem;
+            }
+        }
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.1rem;
+            }
+            .btn-cta, .btn-outline-custom {
+                width: 100%;
+                margin-bottom: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient Glowing Effects -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Header / Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#hero">
+                <div class="brand-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <span>NexTech <span style="color: var(--accent-cyan);">AI</span></span>
+            </a>
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars fs-3"></i>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#hero">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Chương Trình Đào Tạo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#stats">Thành Tựu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#testimonials">Học Viên</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Liên Hệ</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-cta" data-bs-toggle="modal" data-bs-target="#registerModal">
+                        <i class="fa-solid fa-paper-plane me-2"></i>Tư Vấn Miễn Phí
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6">
+                    <div class="badge-pill">
+                        <i class="fa-solid fa-bolt text-warning"></i> Đón Đầu Kỷ Nguyên AI 2026
+                    </div>
+                    <h1 class="hero-title">
+                        Bứt Phá Sự Nghiệp Với <span class="gradient-text">MOS, Java & Trí Tuệ Nhân Tạo AI</span>
+                    </h1>
+                    <p class="hero-description">
+                        Trung tâm đào tạo tin học công nghệ cao NexTech. Chúng tôi giúp bạn chinh phục chứng chỉ quốc tế MOS, thành thạo lập trình Java Backend và làm chủ công cụ AI để nâng cao gấp 10 lần hiệu suất làm việc.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <button class="btn btn-cta" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <i class="fa-solid fa-rocket me-2"></i>Đăng Ký Tư Vấn Ngay
+                        </button>
+                        <a href="#features" class="btn btn-outline-custom">
+                            <i class="fa-solid fa-compass me-2"></i>Khám Phá Khóa Học
+                        </a>
+                    </div>
+                    
+                    <!-- Quick Badges -->
+                    <div class="mt-4 pt-3 d-flex align-items-center gap-4 text-muted small">
+                        <div><i class="fa-solid fa-circle-check text-success me-1"></i> Thực hành 100%</div>
+                        <div><i class="fa-solid fa-circle-check text-success me-1"></i> Cam kết đầu ra</div>
+                        <div><i class="fa-solid fa-circle-check text-success me-1"></i> Hỗ trợ việc làm</div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="hero-card">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="spinner-grow spinner-grow-sm text-success" role="status"></span>
+                                <span class="fw-bold text-white">Lịch Khai Giảng Mới Nhất</span>
+                            </div>
+                            <span class="badge bg-danger">Ưu đãi -50%</span>
+                        </div>
+
+                        <!-- Mini Course List inside Hero Card -->
+                        <div class="vstack gap-3 mb-4">
+                            <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon-mos rounded-3 p-2 text-center" style="width: 42px; height: 42px;">
+                                        <i class="fa-file-excel fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="fw-bold text-white">Luyện Thi MOS Quốc Tế</div>
+                                        <small class="text-muted">Excel, Word, PowerPoint (Bao Đỗ)</small>
+                                    </div>
+                                </div>
+                                <span class="text-info fw-semibold small">Lớp Buổi Tối</span>
+                            </div>
+
+                            <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon-java rounded-3 p-2 text-center" style="width: 42px; height: 42px;">
+                                        <i class="fa-brands fa-java fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="fw-bold text-white">Lập Trình Java Masterclass</div>
+                                        <small class="text-muted">Từ căn bản đến Spring Boot REST API</small>
+                                    </div>
+                                </div>
+                                <span class="text-warning fw-semibold small">Cuối Tuần</span>
+                            </div>
+
+                            <div class="p-3 rounded-3 d-flex align-items-center justify-content-between" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="icon-ai rounded-3 p-2 text-center" style="width: 42px; height: 42px;">
+                                        <i class="fa-solid fa-brain fs-5"></i>
+                                    </div>
+                                    <div>
+                                        <div class="fw-bold text-white">Ứng Dụng AI & Prompting</div>
+                                        <small class="text-muted">ChatGPT, Claude, Tự Động Hóa Workflow</small>
+                                    </div>
+                                </div>
+                                <span class="text-success fw-semibold small">Online / Off</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-cta w-100 py-3" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <i class="fa-solid fa-ticket me-2"></i>Giữ Chỗ Ngay - Đăng Ký Trực Tuyến
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Strip -->
+    <section class="stats-strip" id="stats">
+        <div class="container">
+            <div class="row text-center gy-4">
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">98%</div>
+                    <div class="text-muted fw-medium">Tỷ Lệ Đỗ MOS Ngay Lần Đầu</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">5.000+</div>
+                    <div class="text-muted fw-medium">Học Viên Đã Tốt Nghiệp</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">100+</div>
+                    <div class="text-muted fw-medium">Doanh Nghiệp Đối Tác</div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-number">4.9/5 ⭐</div>
+                    <div class="text-muted fw-medium">Đánh Giá Từ Học Viên</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (3 Core Feature Cards) -->
+    <section class="py-5" id="features">
+        <div class="container py-4">
+            <div class="text-center section-title-wrapper">
+                <span class="badge-pill">
+                    <i class="fa-solid fa-star text-warning"></i> Tính Năng & Khóa Học Nổi Bật
+                </span>
+                <h2 class="section-title">Chương Trình Đào Tạo Chuẩn Độc Quyền</h2>
+                <p class="text-muted mx-auto" style="max-width: 650px;">
+                    Thiết kế lộ trình học tinh gọn, tập trung vào thực hành và ứng dụng thực tế giúp học viên thành thạo kỹ năng chỉ trong thời gian ngắn.
+                </p>
+            </div>
+
+            <div class="row gy-4">
+                <!-- Feature Card 1: MOS -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-mos">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="feature-title">Tin Học Văn Phòng MOS</h3>
+                        <p class="feature-desc">
+                            Chương trình luyện thi chứng chỉ tin học quốc tế Certiport (Microsoft Office Specialist): Excel, Word, PowerPoint. Lộ trình từ cơ bản đến nâng cao, cam kết bao đỗ 100%.
+                        </p>
+                        <ul class="list-unstyled mb-4 text-muted small">
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i>Thực hành trên phần mềm GMetrix chuẩn</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-info me-2"></i>Mẹo làm bài thi đạt điểm tuyệt đối 1000/1000</li>
+                            <li><i class="fa-solid fa-check text-info me-2"></i>Cấp chứng chỉ có giá trị vĩnh viễn toàn cầu</li>
+                        </ul>
+                        <div class="feature-tags">
+                            <span class="tech-badge text-info">Excel Advanced</span>
+                            <span class="tech-badge text-info">Word Specialist</span>
+                            <span class="tech-badge text-info">PowerPoint</span>
+                        </div>
+                        <div class="d-flex gap-2 mt-4">
+                            <a href="mos-ai.html" class="btn btn-outline-custom flex-grow-1 text-center">
+                                Chi Tiết Khóa Học
+                            </a>
+                            <button class="btn btn-cta px-3" data-bs-toggle="modal" data-bs-target="#registerModal" data-course="MOS" title="Đăng Ký">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2: Java -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-java">
+                            <i class="fa-brands fa-java"></i>
+                        </div>
+                        <h3 class="feature-title">Lập Trình Java Thực Chiến</h3>
+                        <p class="feature-desc">
+                            Đào tạo lập trình viên Java Backend chuyên nghiệp. Xây dựng tư duy thuật toán, Hướng đối tượng (OOP), làm chủ Cơ sở dữ liệu MySQL/PostgreSQL và Framework Spring Boot.
+                        </p>
+                        <ul class="list-unstyled mb-4 text-muted small">
+                            <li class="mb-2"><i class="fa-solid fa-check text-pink me-2"></i>Xây dựng RESTful API chuẩn doanh nghiệp</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-pink me-2"></i>Thực hiện 2 dự án thực tế đưa lên GitHub</li>
+                            <li><i class="fa-solid fa-check text-pink me-2"></i>Hỗ trợ Review CV & Luyện phỏng vấn IT</li>
+                        </ul>
+                        <div class="feature-tags">
+                            <span class="tech-badge text-danger">Java Core</span>
+                            <span class="tech-badge text-danger">Spring Boot</span>
+                            <span class="tech-badge text-danger">REST API</span>
+                        </div>
+                        <button class="btn btn-outline-custom w-100 mt-4" data-bs-toggle="modal" data-bs-target="#registerModal" data-course="Java">
+                            Đăng Ký Khóa Java
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3: AI -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon-box icon-ai">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="feature-title">Ứng Dụng Trí Tuệ Nhân Tạo AI</h3>
+                        <p class="feature-desc">
+                            Khóa học đột phá kỹ năng làm việc trong thời đại AI. Làm chủ ChatGPT, Claude, Midjourney và viết Prompt thông minh giúp tự động hóa báo cáo, lập trình và sáng tạo nội dung.
+                        </p>
+                        <ul class="list-unstyled mb-4 text-muted small">
+                            <li class="mb-2"><i class="fa-solid fa-check text-purple me-2"></i>Kỹ thuật Prompt Engineering chuyên sâu</li>
+                            <li class="mb-2"><i class="fa-solid fa-check text-purple me-2"></i>Ứng dụng AI vào Phân tích dữ liệu & Excel</li>
+                            <li><i class="fa-solid fa-check text-purple me-2"></i>Xây dựng Custom AI Agent hỗ trợ công việc</li>
+                        </ul>
+                        <div class="feature-tags">
+                            <span class="tech-badge text-purple">ChatGPT-4o</span>
+                            <span class="tech-badge text-purple">Prompt Eng</span>
+                            <span class="tech-badge text-purple">AI Workflow</span>
+                        </div>
+                        <div class="d-flex gap-2 mt-4">
+                            <a href="course-ai.html" class="btn btn-outline-custom flex-grow-1 text-center">
+                                Chi Tiết Khóa Học
+                            </a>
+                            <button class="btn btn-cta px-3" data-bs-toggle="modal" data-bs-target="#registerModal" data-course="AI" title="Đăng Ký">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-5 bg-dark-subtle bg-opacity-10" id="testimonials">
+        <div class="container py-4">
+            <div class="text-center section-title-wrapper">
+                <span class="badge-pill">
+                    <i class="fa-solid fa-heart text-danger"></i> Đánh Giá Từ Học Viên
+                </span>
+                <h2 class="section-title">Cảm Nhận Của Học Viên Tại NexTech</h2>
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-img bg-primary text-white d-flex align-items-center justify-content-center fw-bold fs-5">
+                                NV
+                            </div>
+                            <div>
+                                <h6 class="mb-0 text-white font-heading">Nguyễn Văn An</h6>
+                                <small class="text-muted">Học viên khóa MOS Excel (1000/1000)</small>
+                            </div>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            "Nhờ khóa luyện thi MOS tại NexTech mà mình đã đạt điểm tuyệt đối 1000 điểm môn Excel. Giảng viên dạy rất tận tâm, nhiều mẹo hay làm bài cực nhanh!"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-img bg-danger text-white d-flex align-items-center justify-content-center fw-bold fs-5">
+                                TH
+                            </div>
+                            <div>
+                                <h6 class="mb-0 text-white font-heading">Trần Minh Hoàng</h6>
+                                <small class="text-muted">Lập trình viên Java Junior</small>
+                            </div>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            "Từ một người chưa biết gì về code, sau 4 tháng học khóa Java tại NexTech mình đã có thể tự tay làm dự án Web Spring Boot và pass phỏng vấn thực tập sinh."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="avatar-img bg-purple text-white d-flex align-items-center justify-content-center fw-bold fs-5" style="background: var(--accent-purple);">
+                                PL
+                            </div>
+                            <div>
+                                <h6 class="mb-0 text-white font-heading">Phạm Thùy Linh</h6>
+                                <small class="text-muted">Chuyên viên Marketing</small>
+                            </div>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            "Khóa học AI Ứng dụng thực sự thay đổi tư duy làm việc của mình. Giờ đây công việc sáng tạo nội dung và viết báo cáo tuần của mình nhanh hơn gấp 5 lần!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration Modal -->
+    <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3">
+                <div class="modal-header border-0">
+                    <h5 class="modal-header-title font-heading fw-bold text-white fs-4 mb-0" id="registerModalLabel">
+                        <i class="fa-solid fa-graduation-cap text-info me-2"></i>Đăng Ký Tư Vấn Khóa Học
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-muted small mb-4">Điền thông tin bên dưới để nhận ngay ưu đãi <strong>50% học phí</strong> và tư vấn lộ trình học miễn phí.</p>
+                    <form id="registrationForm">
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label small fw-semibold">Họ và Tên <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Ví dụ: Nguyễn Văn A" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label small fw-semibold">Số Điện Thoại / Zalo <span class="text-danger">*</span></label>
+                            <input type="tel" class="form-control" id="phoneNumber" placeholder="Ví dụ: 0987654321" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="emailAddr" class="form-label small fw-semibold">Email Liên Hệ</label>
+                            <input type="email" class="form-control" id="emailAddr" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-4">
+                            <label for="courseSelect" class="form-label small fw-semibold">Khóa Học Quan Tâm <span class="text-danger">*</span></label>
+                            <select class="form-select" id="courseSelect" required>
+                                <option value="" selected disabled>-- Chọn khóa học --</option>
+                                <option value="MOS">Tin Học Văn Phòng MOS Quốc Tế</option>
+                                <option value="Java">Lập Trình Java Thực Chiến (Spring Boot)</option>
+                                <option value="AI">Ứng Dụng Trí Tuệ Nhân Tạo AI & Prompting</option>
+                                <option value="Combo">Combo Toàn Diện: MOS + Java + AI</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-cta w-100 py-2 fs-6">
+                            <i class="fa-solid fa-paper-plane me-2"></i>Gửi Thông Tin Đăng Ký
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification for Form Submit -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="successToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="fa-solid fa-circle-check me-2"></i>Đăng ký thành công! Tư vấn viên sẽ liên hệ với bạn trong 15 phút.
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="row gy-4 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="navbar-brand mb-3">
+                        <div class="brand-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <span>NexTech <span style="color: var(--accent-cyan);">AI</span></span>
+                    </div>
+                    <p class="small text-muted mb-4">
+                        Trung tâm đào tạo tin học & công nghệ hàng đầu. Chuyên đào tạo chứng chỉ quốc tế MOS, Lập trình Java và Ứng dụng AI chuyên sâu.
+                    </p>
+                    <div>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#" class="social-btn"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="text-white font-heading fw-bold mb-3">Khóa Học</h6>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="#features">Chứng Chỉ MOS</a></li>
+                        <li class="mb-2"><a href="#features">Lập Trình Java</a></li>
+                        <li class="mb-2"><a href="#features">Khóa Học AI</a></li>
+                        <li class="mb-2"><a href="#features">Excel Nâng Cao</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="ps-md-3">
+                        <h6 class="text-white font-heading fw-bold mb-3">Thông Tin Liên Hệ</h6>
+                        <ul class="list-unstyled small text-muted">
+                            <li class="mb-2"><i class="fa-solid fa-location-dot text-info me-2"></i>Tầng 5, Tòa Nhà Công Nghệ, Hà Nội & TP.HCM</li>
+                            <li class="mb-2"><i class="fa-solid fa-phone text-info me-2"></i>Hotline: 0988.123.456</li>
+                            <li class="mb-2"><i class="fa-solid fa-envelope text-info me-2"></i>Email: tuyensinh@nextech.edu.vn</li>
+                            <li class="mb-2"><i class="fa-solid fa-globe text-info me-2"></i>Website: nextech.edu.vn</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="text-white font-heading fw-bold mb-3">Thời Gian Làm Việc</h6>
+                    <p class="small text-muted mb-2">Thứ 2 - Thứ 7: 08:00 - 21:00</p>
+                    <p class="small text-muted mb-4">Chủ Nhật: 08:00 - 17:30</p>
+                    <div class="p-3 rounded-3" style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);">
+                        <small class="text-white d-block fw-bold mb-1">🎁 Nhận Học Bổng AI 2026</small>
+                        <small class="text-muted d-block">Đăng ký trước ngày 15/08 để nhận thêm Vô số quà tặng công nghệ.</small>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="border-color: rgba(255,255,255,0.08);">
+            
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-center small text-muted pt-3">
+                <div>&copy; 2026 NexTech Academy. Tất cả quyền được bảo lưu.</div>
+                <div class="mt-2 mt-md-0">
+                    <a href="#" class="me-3">Điều khoản dịch vụ</a>
+                    <a href="#">Chính sách bảo mật</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3.3 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom Interactive JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar Background Change on Scroll
+            const navbar = document.getElementById('mainNavbar');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.style.background = 'rgba(9, 13, 22, 0.95)';
+                    navbar.style.padding = '0.75rem 0';
+                    navbar.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.5)';
+                } else {
+                    navbar.style.background = 'rgba(9, 13, 22, 0.85)';
+                    navbar.style.padding = '1rem 0';
+                    navbar.style.boxShadow = 'none';
+                }
+            });
+
+            // Pre-select course in Modal when clicking course buttons
+            const registerModal = document.getElementById('registerModal');
+            registerModal.addEventListener('show.bs.modal', function(event) {
+                const button = event.relatedTarget;
+                if (button) {
+                    const courseTarget = button.getAttribute('data-course');
+                    if (courseTarget) {
+                        const courseSelect = document.getElementById('courseSelect');
+                        courseSelect.value = courseTarget;
+                    }
+                }
+            });
+
+            // Form Submit Handling
+            const form = document.getElementById('registrationForm');
+            const successToast = new bootstrap.Toast(document.getElementById('successToast'));
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Close Modal
+                const modalInstance = bootstrap.Modal.getInstance(registerModal);
+                if (modalInstance) {
+                    modalInstance.hide();
+                }
+
+                // Show Success Toast
+                successToast.show();
+
+                // Reset Form
+                form.reset();
+            });
+
+            // Smooth Scroll for Nav links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Close navbar toggler if open on mobile
+                        const navbarCollapse = document.getElementById('navbarContent');
+                        if (navbarCollapse.classList.contains('show')) {
+                            const bsCollapse = new bootstrap.Collapse(navbarCollapse);
+                            bsCollapse.hide();
+                        }
+
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
